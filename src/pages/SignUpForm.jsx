@@ -8,22 +8,33 @@ const SignUpForm = (props) => {
 
     const initialState = {
         username: '',
+        email: '',
         password: '',
         confirmPassword: '',
+        bio:'',
+
     }
 
     const [formData, setFormData] = useState(initialState)
+    const [profilePic, setProfilePic] = useState(null)
     const [message, setMessage] = useState('')
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
+
+     const handleFileChange = (event) => {
+        setProfilePic(event.target.files[0])
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            const newUser = await signUp(formData)
+            const submitData = new FormData(event.target)
+            const newUser = await signUp(submitData)
             props.setUser(newUser)
             setFormData(initialState)
+            setProfilePic(null)
             navigate('/')
         } catch (err) {
             setMessage(err.message)
@@ -45,10 +56,16 @@ const SignUpForm = (props) => {
             <form onSubmit={handleSubmit}>
                 Username:
                 <input type="text" name="username" onChange={handleChange} value={formData.username} required />
+                Email: 
+                <input type="email" name="email" onChange={handleChange} value={formData.email} required />
                 Password:
                 <input type="password" name="password" onChange={handleChange} value={formData.password} required />
                 Confirm Password:
                 <input type="password" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} required />
+                Bio:
+                <input type="text" name="bio" onChange={handleChange} value={formData.bio} />
+                Profile Picture:
+                <input type="file" name="profilePic" onChange={handleFileChange} />
                 <div className="actions">
                     <button type="submit" disabled={!isFormValid()}>Sign Up</button>
                     <button>Cancel</button>
