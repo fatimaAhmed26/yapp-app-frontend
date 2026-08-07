@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { show } from "../services/user";
 import { followToggle } from "../services/user";
+import { Link } from "react-router";
 
 const Profile = (props) => {
     const { userId } = useParams()
@@ -25,6 +26,7 @@ const Profile = (props) => {
     }
 
     const isFollowing = props.user && profileUser.followers?.includes(props.user._id)
+    const isOwnProfile = props.user && props.user._id === profileUser._id
 
 return (
     <section>
@@ -33,9 +35,17 @@ return (
         <p>Bio:{profileUser.bio}</p>
         <p>Followers: {profileUser.followers?.length || 0} Following: {profileUser.following?.length || 0}</p>
 
-        <button onClick={handleFollow}>
+       
+
+        {isOwnProfile ?(
+            <Link to={`/users/${userId}/edit`}>
+                <button>Edit profile</button>
+            </Link>
+        ): (
+             <button onClick={handleFollow}>
             {isFollowing ? 'Unfollow': 'Follow'}
         </button>
+        )}
     </section>
 )
 }
