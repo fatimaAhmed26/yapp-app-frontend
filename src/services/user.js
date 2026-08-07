@@ -56,9 +56,8 @@ const update = async (userId, userFormData) => {
         method: 'PUT',
         headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userFormData),
+      body: userFormData,
     })
     return res.json()
     } catch (err) {
