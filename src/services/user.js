@@ -31,7 +31,27 @@ try {
 }
 }
 
+const followToggle = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/users/${userId}/follow`, { 
+            method: 'PUT',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
+        const data= await res.json()
+
+         if (data.err) {
+            console.log(data.err)
+            throw new Error(data.err)
+        }
+
+        return data
+    } catch (err) {
+         throw new Error(err)
+    }
+}
+
 export {
     index,
     show,
+    followToggle,
 }
