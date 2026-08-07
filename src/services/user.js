@@ -31,7 +31,7 @@ try {
 }
 }
 
-const followToggle = async () => {
+const followToggle = async (userId) => {
     try {
         const res = await fetch(`${BASE_URL}/users/${userId}/follow`, { 
             method: 'PUT',
