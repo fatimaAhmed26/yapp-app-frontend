@@ -20,6 +20,18 @@ const index = async (formData) => {
     }
 }
 
+const show = async (userId) => {
+try {
+    const res = await fetch(`${BASE_URL}/users/${userId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+    return res.json()
+} catch (err) {
+    throw new Error(err)
+}
+}
+
 export {
     index,
+    show,
 }
