@@ -18,7 +18,7 @@ const Profile = () => {
 
 return (
     <section>
-        <img src={profileUser.profilePic} width="100px" />
+        {profileUser.profilePic && <img src={profileUser.profilePic} width="100px" alt={profileUser.username} />}
         <h1>Username: {profileUser.username}</h1>
         <p>Bio:{profileUser.bio}</p>
         <p>followers: {profileUser.followers?.length || 0} Followers . {profileUser.following?.length || 0}</p>
