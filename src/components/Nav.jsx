@@ -10,7 +10,7 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <Link className="nav-brand" to="/">App Name</Link>
+            <Link className="nav-brand" to="/">Yapp</Link>
             { props.user ? (
                 <ul>
                     <li>Welcome, {props.user.username}!</li>
@@ -31,6 +31,9 @@ const Nav = (props) => {
                 </li>
                 <li>
                     <Link to='/sign-in'>Sign In</Link>
+                </li>
+                <li>
+                    <Link to='/users/:userId'>Profile</Link>
                 </li>
             </ul>
             ) }

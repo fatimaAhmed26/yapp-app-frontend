@@ -20,6 +20,55 @@ const index = async (formData) => {
     }
 }
 
+const show = async (userId) => {
+try {
+    const res = await fetch(`${BASE_URL}/users/${userId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+    return res.json()
+} catch (err) {
+    throw new Error(err)
+}
+}
+
+const followToggle = async (userId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/users/${userId}/follow`, { 
+            method: 'PUT',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
+        const data= await res.json()
+
+         if (data.err) {
+            console.log(data.err)
+            throw new Error(data.err)
+        }
+
+        return data
+    } catch (err) {
+         throw new Error(err)
+    }
+}
+
+const update = async (userId, userFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userFormData),
+    })
+    return res.json()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
 export {
     index,
+    show,
+    followToggle,
+    update
 }
