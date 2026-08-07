@@ -50,8 +50,25 @@ const followToggle = async (userId) => {
     }
 }
 
+const update = async (userId, userFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userFormData),
+    })
+    return res.json()
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
 export {
     index,
     show,
     followToggle,
+    update
 }

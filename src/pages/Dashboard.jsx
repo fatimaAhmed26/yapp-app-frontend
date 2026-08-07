@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { index } from '../services/user'
+import { Link } from "react-router"
+
 
 const Dashboard = (props) => {
 
@@ -21,13 +23,18 @@ const Dashboard = (props) => {
                 <h2>View All the Users</h2>
             </header>
             {allUsers.map((user) => (
+                <Link to={`/users/${user._id}`} key={user._id}>
+                    
+               
                 <div className="card">
                     <header>
                         <h1>
                         {user.username}
                         </h1>
                     </header>
-                </div>
+                    
+                </div> 
+                </Link>
             ))}
         </section>
     )
