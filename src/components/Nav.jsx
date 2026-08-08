@@ -18,6 +18,9 @@ const Nav = (props) => {
                         <Link to="/">Dashboard</Link>
                     </li>
                     <li>
+                    <Link to={`/users/${props.user._id}`}>Profile</Link>
+                </li>
+                    <li>
                         <Link to="/" onClick={handleSignOut}>Sign Out</Link>
                     </li>
                 </ul>
@@ -31,9 +34,6 @@ const Nav = (props) => {
                 </li>
                 <li>
                     <Link to='/sign-in'>Sign In</Link>
-                </li>
-                <li>
-                    <Link to='/users/:userId'>Profile</Link>
                 </li>
             </ul>
             ) }

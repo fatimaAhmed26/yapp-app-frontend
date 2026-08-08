@@ -33,7 +33,8 @@ return (
         {profileUser.profilePic && <img src={profileUser.profilePic} width="100px" alt={profileUser.username} />}
         <h1>Username: {profileUser.username}</h1>
         <p>Bio:{profileUser.bio}</p>
-        <p>Followers: {profileUser.followers?.length || 0} Following: {profileUser.following?.length || 0}</p>
+        <Link to={`/users/${userId}/followers`}>Followers: {profileUser.followers?.length || 0} </Link>
+        <Link to={`/users/${userId}/following`}>Following: {profileUser.following?.length || 0} </Link>
 
        
 
