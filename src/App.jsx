@@ -8,6 +8,7 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
 import EditProfile from "./pages/EditProfile"
+import UserList from "./pages/UserList"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
