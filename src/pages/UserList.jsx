@@ -4,13 +4,13 @@ import { show } from "../services/user";
 import { Link, useParams } from "react-router";
 
 const UserList = ({ type}) => {
-    const userId= useParams()
+    const {userId} = useParams()
     const [profileUser, setProfileUser]= useState(null)
 
      useEffect(() => {
              const fetchUser = async () => {
                  const userData = await show(userId)
-                 setFormData({bio: userData.bio || ''})
+                 setProfileUser(userData)
              }
              fetchUser()
          }, [userId])
@@ -27,7 +27,7 @@ const UserList = ({ type}) => {
                 <div className="card">
                     <header>
                         {user.profilePic && <img src={user.profilePic} width="50px" />}
-                        <h1>{user.username}</h1>
+                        <h1>@{user.username}</h1>
                     </header>
                 </div>
 
