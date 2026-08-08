@@ -25,7 +25,7 @@ const Profile = (props) => {
 
     }
 
-    const isFollowing = props.user && profileUser.followers?.includes(props.user._id)
+    const isFollowing = props.user && profileUser.followers?.some((follower) => follower._id=== props.user._id)
     const isOwnProfile = props.user && props.user._id === profileUser._id
 
 return (
