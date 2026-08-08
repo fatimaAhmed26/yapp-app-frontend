@@ -10,7 +10,9 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <Link className="nav-brand" to="/">Yapp</Link>
+            <Link className="nav-brand" to="/">
+            Yapp
+            </Link>
             { props.user ? (
                 <ul>
                     <li>Welcome, {props.user.username}!</li>

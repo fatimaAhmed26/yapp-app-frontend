@@ -36,8 +36,6 @@ return (
         <Link to={`/users/${userId}/followers`}>Followers: {profileUser.followers?.length || 0} </Link>
         <Link to={`/users/${userId}/following`}>Following: {profileUser.following?.length || 0} </Link>
 
-       
-
         {isOwnProfile ?(
             <Link to={`/users/${userId}/edit`}>
                 <button>Edit profile</button>
