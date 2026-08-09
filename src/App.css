@@ -1,12 +1,16 @@
-#root {
-  min-height: 100vh;
-}
+
 
 .app-main {
   display: flex;
   justify-content: center;
+  flex: 1;
   width: 100%;
   padding: 48px 24px;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
 }
 
 @media (max-width: 600px) {
@@ -17,10 +21,22 @@
 
 nav {
   display: flex;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background-color: var( --color-surface);
   padding: 2px 10px;
+  min-height: fit-content;
+  gap: 12px;
+  margin: 24px;
+  padding: 20px;
+  border-radius: 24px;
+  width: 260px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  
 }
 
 .nav-brand {
@@ -30,8 +46,29 @@ nav {
 
 nav ul {
   display: flex;
+  flex-direction: column;
   gap: 16px;
   list-style: none;
+  width: 100%;
+}
+
+nav ul li {
+  border-radius: 999px;
+  
+}
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
 }
 
 nav a:hover {
