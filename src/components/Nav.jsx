@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-
+import { HomeIcon, UserIcon,UserGroupIcon,UsersIcon, MoonIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline"
 
 const Nav = (props) => {
 
@@ -10,20 +10,44 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <Link className="nav-brand" to="/">
+            {/* <Link className="nav-brand" to="/">
             Yapp
-            </Link>
+            </Link> */}
             { props.user ? (
                 <ul>
-                    <li>Welcome, {props.user.username}!</li>
+                    
                     <li>
-                        <Link to="/">Dashboard</Link>
+                        <Link to="/">
+                        <HomeIcon className="nav-icon" />
+                        Home</Link>
                     </li>
                     <li>
-                    <Link to={`/users/${props.user._id}`}>Profile</Link>
+                    <Link to={`/users/${props.user._id}`}>
+                    <UserIcon className="nav-icon" />
+                    Profile</Link>
                 </li>
+                <li>
+                   <Link to={`/users/${props.user._id}/followers`}>
+                   <UserGroupIcon className="nav-icon" />
+                   Followers
+                    </Link>
+                    </li>
+                     <li>
+                   <Link to={`/users/${props.user._id}/following`}>
+                   <UsersIcon className="nav-icon" />
+                   Following
+                    </Link>
+                    </li>
+                     <li>
+                   <Link to='/'>
+                   <MoonIcon className="nav-icon" />
+                   Dark Mode
+                    </Link>
+                    </li>
                     <li>
-                        <Link to="/" onClick={handleSignOut}>Sign Out</Link>
+                        <Link to="/" onClick={handleSignOut}>
+                        <ArrowRightStartOnRectangleIcon className="nav-icon" />
+                        Sign Out</Link>
                     </li>
                 </ul>
             ) : (

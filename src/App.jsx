@@ -41,7 +41,7 @@ const [posts ,setPosts] = useState([])
   }
 
   return (
-    <div>
+    <div className="app-layout">
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
