@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { show, update } from "../services/user";
+import { deleteUser, show, update } from "../services/user";
 import { useParams, useNavigate } from "react-router";
 
 
@@ -43,6 +43,14 @@ const EditProfile = (props) => {
         }
     }
 
+    const handleDelete = async (event) => {
+        try {
+            await deleteUser(userId)
+            navigate('/')
+        } catch (err) {
+            setMessage(err.message)
+        }
+    }
    
 
     return (
@@ -60,7 +68,8 @@ const EditProfile = (props) => {
 
                 <button type="submit">Submit</button>
                 <button type="button"onClick={() => navigate(`/users/${userId}`)} >Cancel</button>
-            </form>
+                <button type="button" onClick={handleDelete}>Delete</button>
+            </form> 
         </section>
     )
 
