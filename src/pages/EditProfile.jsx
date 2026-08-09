@@ -8,12 +8,12 @@ const EditProfile = (props) => {
      const navigate = useNavigate()
      const [message, setMessage] = useState('')
      const [profilePic, setProfilePic]= useState(null)
-     const [formData, setFormData] = useState({ bio: ''})
+     const [formData, setFormData] = useState({ bio: '', username: ''})
 
     useEffect(() => {
              const fetchUser = async () => {
                  const userData = await show(userId)
-                 setFormData({bio: userData.bio || ''})
+                 setFormData({bio: userData.bio || '', username: userData.username || '' })
              }
              fetchUser()
          }, [userId])
@@ -31,6 +31,7 @@ const EditProfile = (props) => {
         try {
             const submitData = new FormData()
             submitData.append('bio', formData.bio)
+            submitData.append('username', formData.username)
             if (profilePic) {
                 submitData.append('profilePic', profilePic)
             }
@@ -50,6 +51,8 @@ const EditProfile = (props) => {
                 <h1>Edit profile</h1>
             </header>
             <form onSubmit={handleSubmit}>
+                Username: 
+                <input type="text" name="username" value={formData.username} onChange={handleChange} />
                 Bio:
                 <textarea name="bio" value={formData.bio} onChange={handleChange} />
                 Profile Pic:
