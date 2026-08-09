@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
 import EditProfile from "./pages/EditProfile"
 import UserList from "./pages/UserList"
+import * as postService from './services/post'
+import PostForm from "./pages/PostFrom"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -19,9 +21,15 @@ const getUserFromToken = () => {
 }
 
 const App = () => {
-
+const [posts ,SetPosts] = useState()
   const [user, setUser] = useState(getUserFromToken())
   
+  const handleAddPost = async (formData) => {
+    const newPost = await postService.create(formData)
+    setHoots([newPost, ...posts])
+    navigate('/')
+  }
+
   return (
     <div>
       <Nav user={user} setUser={setUser} />
@@ -34,6 +42,7 @@ const App = () => {
         <Route path="/users/:userId/edit" element={<EditProfile user={user} />} />
         <Route path="/users/:userId/followers" element={<UserList type='followers' /> } />
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
+        <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
       </Routes>
       </main>
     </div>
