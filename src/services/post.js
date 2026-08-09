@@ -27,8 +27,23 @@ const create = async (postFormData) => {
     console.log(error)
   }
 }
+
+const deletePost = async (postId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 export{
     index,
     create,
+    deletePost,
 
 }
