@@ -65,9 +65,27 @@ const update = async (userId, userFormData) => {
     }
 }
 
+const deleteUser = async (userId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/users/${userId}`, {
+            method: 'DELETE',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        })
+        const data = await res.json()
+
+         if (data.err) {
+            console.log(data.err)
+            throw new Error(data.err)
+        }
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
 export {
     index,
     show,
     followToggle,
-    update
+    update,
+    deleteUser
 }
