@@ -1,8 +1,8 @@
 import Nav from "./components/Nav"
 import SignUpForm from "./pages/SignUpForm"
 import './App.css'
-import { Routes, Route } from "react-router"
-import { useState } from "react"
+import { Routes, Route, useNavigate } from "react-router"
+import { useState , useEffect} from "react"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
@@ -22,13 +22,22 @@ const getUserFromToken = () => {
 }
 
 const App = () => {
-const [posts ,SetPosts] = useState()
+  const navigate= useNavigate()
+const [posts ,setPosts] = useState([])
   const [user, setUser] = useState(getUserFromToken())
-  
+   useEffect(() => {
+    const fetchAllPosts = async () => {
+      const postsData = await postService.index()
+      setPosts(postsData)
+      console.log(posts,"app post");
+      
+    }
+    if (user) fetchAllPosts()
+  }, [user])
   const handleAddPost = async (formData) => {
     const newPost = await postService.create(formData)
-    setHoots([newPost, ...posts])
-    navigate('/')
+    setPosts([...posts , newPost])
+    navigate('/posts')
   }
 
   return (
@@ -44,7 +53,7 @@ const [posts ,SetPosts] = useState()
         <Route path="/users/:userId/followers" element={<UserList type='followers' /> } />
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
 
-        <Route path="/Posts" element={<PostList posts={posts}/>}/>
+        <Route path="/posts" element={<PostList posts={posts}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
       </Routes>
       </main>

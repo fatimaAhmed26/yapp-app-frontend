@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/posts`
 
 
 const index = async () => {
@@ -18,9 +18,8 @@ const create = async (postFormData) => {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(postFormData),
+      body:postFormData,
     })
     return res.json()
   } catch (error) {
@@ -48,9 +47,8 @@ async function update(postId, postFormData) {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(postFormData),
+      body:postFormData,
     })
     return res.json()
   } catch (error) {

@@ -9,16 +9,19 @@ const PostForm =(props)=>{
         text:''
     }
     const [formData , setFormData] = useState(initialState)
-    const [appMedia ,setAppMedia] =useState('')
-    const handleSubmit = (event)=>{
-        evt.preventDefault()
-        props.handleAddPost(formData)
-    }
+   const handleSubmit = (event) => {
+    event.preventDefault()
+    const submitData = new FormData()
+    submitData.append('media', formData.media)
+    submitData.append('text', formData.text)
+    props.handleAddPost(submitData)
+}
     const handleChange=(evt)=>{
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
     }
      const handleFileChange = (event) => {
-        setAppMedia(event.target.files[0])
+        console.log(event.target.files)
+        setFormData(prev => ({...prev, media: event.target.files[0]}))
     }
     
   useEffect(() => {
@@ -31,7 +34,7 @@ const PostForm =(props)=>{
     return () => setFormData(initialState)
   }, [postId])
     return(
-        <dev>
+        <div>
             <h1>post form</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="media">Share your thoughts by adding a text, image or video </label>
@@ -39,7 +42,7 @@ const PostForm =(props)=>{
                 <input type="text" name='text' onChange={handleChange}/>
                 <button type='submit'>Add Post</button>
             </form>
-        </dev>
+        </div>
     )
 }
 export default PostForm
