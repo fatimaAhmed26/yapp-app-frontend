@@ -1,5 +1,7 @@
 import { useParams, useNavigate, Link } from "react-router"
 import { useRef } from 'react';
+import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 const PostDetails = (props) =>{
       const { postId } = useParams()
   const navigate = useNavigate()
@@ -9,6 +11,16 @@ const PostDetails = (props) =>{
       const dialogRef = useRef(null);
     const openModal = () => dialogRef.current?.showModal();
       const closeModal = () => dialogRef.current?.close();
+
+    if (!post) return <main>Loading...</main> 
+
+    const handleAddComment = (commentFormData) => {
+    props.handleAddComment(postId, commentFormData)}
+
+    const handleDeleteComment = (commentId) => {
+    props.handleDeleteComment(postId, commentId)}
+
+
 
 return(
     <main>
@@ -28,6 +40,13 @@ return(
         <button onClick={closeModal}>Close</button>
       </dialog>
 
+      <h3>Comments</h3>
+      <CommentList
+        comments={post.comment}
+        user={props.user}
+        handleDeleteComment={handleDeleteComment}
+      />
+      <CommentForm handleAddComment={handleAddComment} />
     </main>
 )
 }
