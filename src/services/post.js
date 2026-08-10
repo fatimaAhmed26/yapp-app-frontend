@@ -66,6 +66,17 @@ const show = async (postId) => {
     console.log(error)
   }
 }
+const likeToggle = async (postId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}/liked`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export{
     index,
@@ -73,6 +84,7 @@ export{
     deletePost,
     update,
     show,
+    likeToggle,
 
 
 }

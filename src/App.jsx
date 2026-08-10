@@ -42,6 +42,10 @@ const [posts ,setPosts] = useState([])
     navigate('/posts')
   }
 
+  const handlePostUpdated = (updatedPost) => {
+    setPosts(posts.map((post) => (post._id === updatedPost._id ? updatedPost : post)))
+  }
+
   return (
     <div className="app-layout">
       <Nav user={user} setUser={setUser} />
@@ -55,7 +59,7 @@ const [posts ,setPosts] = useState([])
         <Route path="/users/:userId/followers" element={<UserList type='followers' /> } />
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
 
-        <Route path="/posts" element={<PostList posts={posts}/>}/>
+        <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
         <Route path='/posts/:postId' element={<PostDetails posts={posts}/>}/>
       </Routes>
