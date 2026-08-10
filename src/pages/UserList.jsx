@@ -30,7 +30,6 @@ const UserList = ({ type}) => {
                         <h1>@{user.username}</h1>
                     </header>
                 </div>
-
             </Link>
         ))}
       </section>
