@@ -45,7 +45,12 @@ const [posts ,setPosts] = useState([])
   const handlePostUpdated = (updatedPost) => {
     setPosts(posts.map((post) => (post._id === updatedPost._id ? updatedPost : post)))
   }
-
+const deletePost=async(postId)=>{
+      await postService.deletePost(postId)
+      const filteredPost = posts.filter((post)=> posts._id !== postId)
+      setPosts(filteredPost)
+      navigate('/posts')
+    }
   return (
     <div className="app-layout">
       <Nav user={user} setUser={setUser} />
@@ -61,7 +66,7 @@ const [posts ,setPosts] = useState([])
 
         <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
-        <Route path='/posts/:postId' element={<PostDetails posts={posts}/>}/>
+        <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost}/>}/>
       </Routes>
       </main>
     </div>
