@@ -29,3 +29,8 @@ const deleteComment = async (postId, commentId) => {
     console.log(error)
   }
 }
+
+export {
+    create,
+    deleteComment
+}

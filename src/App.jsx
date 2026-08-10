@@ -13,7 +13,7 @@ import * as postService from './services/post'
 import PostForm from "./pages/PostFrom"
 import PostList from "./pages/PostList"
 import PostDetails from "./pages/PostDetails"
-
+import * as commentService from "./services/comment"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
