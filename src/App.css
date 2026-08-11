@@ -424,3 +424,30 @@ button.profile-btn-following:hover {
   color: var(--color-text-light);
   font-size: 0.9rem;
 }
+
+.profile-post-like-btn {
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: transparent;
+  color: var(--color-text-light);
+  border-radius: 999px;
+}
+
+.profile-post-like-btn:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-error);
+}
+
+.like-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.like-icon-active {
+  color: var(--color-error);
+}

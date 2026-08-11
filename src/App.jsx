@@ -43,6 +43,7 @@ const [posts ,setPosts] = useState([])
   }
 
   const handlePostUpdated = (updatedPost) => {
+    
     setPosts(posts.map((post) => (post._id === updatedPost._id ? updatedPost : post)))
   }
 const deletePost=async(postId)=>{
@@ -98,7 +99,7 @@ const handleLight = () => {
         <Route path='/' element={user ? <Dashboard user={user} posts={posts} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
-        <Route path="/users/:userId" element={<Profile user={user} posts={posts}/>} />
+        <Route path="/users/:userId" element={<Profile user={user} posts={posts} onPostUpdated={handlePostUpdated}/>} />
         <Route path="/users/:userId/edit" element={<EditProfile user={user} />} />
         <Route path="/users/:userId/followers" element={<UserList type='followers' /> } />
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
