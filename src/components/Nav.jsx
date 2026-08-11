@@ -49,7 +49,11 @@ const Nav = (props) => {
                         <ArrowRightStartOnRectangleIcon className="nav-icon" />
                         Sign Out</Link>
                     </li>
+                      <li>
+                    <Link to='/posts/new'>Add post</Link>
+                </li>
                 </ul>
+                
             ) : (
             <ul>
                 <li>
@@ -61,6 +65,7 @@ const Nav = (props) => {
                 <li>
                     <Link to='/sign-in'>Sign In</Link>
                 </li>
+               
             </ul>
             ) }
 

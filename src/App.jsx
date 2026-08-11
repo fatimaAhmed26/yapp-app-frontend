@@ -86,7 +86,7 @@ const deletePost=async(postId)=>{
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+        <Route path='/' element={user ? <Dashboard user={user} posts={posts} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/users/:userId" element={<Profile user={user} posts={posts}/>} />
@@ -99,7 +99,7 @@ const deletePost=async(postId)=>{
         <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} />}/>
 
 
-        <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
+        <Route path='/posts/:postId' element={<PostDetails user={user} posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
         handleDeleteComment={handleDeleteComment} user={user}onPostUpdated={handlePostUpdated}/>}/>
       </Routes>
       </main>
