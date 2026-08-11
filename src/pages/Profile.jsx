@@ -27,7 +27,7 @@ const Profile = (props) => {
 
     const isFollowing = props.user && profileUser.followers?.some((follower) => follower._id=== props.user._id)
     const isOwnProfile = props.user && props.user._id === profileUser._id
-
+    const userPosts = props.posts?.filter((post) => post.owner?._id === userId) || []
 return (
     <section>
         {profileUser.profilePic && <img src={profileUser.profilePic} width="100px" alt={profileUser.username} />}
@@ -44,6 +44,27 @@ return (
              <button onClick={handleFollow}>
             {isFollowing ? 'Unfollow': 'Follow'}
         </button>
+        )}
+
+        <h2>Posts</h2>
+        {userPosts.length === 0 ? (
+            <p>No posts yet.</p>
+        ) : (
+            <ul>
+                {userPosts.map((post) => (
+                    <li key={post._id}>
+                        <Link to={`/posts/${post._id}`}>
+                            <p>{post.text}</p>
+                            {post.media?.type === 'image' && (
+                                <img src={post.media.url} alt="media" width="150" />
+                            )}
+                            {post.media?.type === 'video' && (
+                                <video src={post.media.url} width="150" />
+                            )}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         )}
     </section>
 )
