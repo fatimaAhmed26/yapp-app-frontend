@@ -34,7 +34,6 @@ const signIn = async (formData) => {
         const data = await res.json()
 
         if (data.err) {
-            console.log(data.err)
             throw new Error(data.err)
         }
 

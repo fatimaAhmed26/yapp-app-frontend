@@ -32,7 +32,6 @@ const [posts ,setPosts] = useState([])
     const fetchAllPosts = async () => {
       const postsData = await postService.index()
       setPosts(postsData)
-      console.log(posts,"app post");
       
     }
     if (user) fetchAllPosts()
@@ -67,15 +66,12 @@ const deletePost=async(postId)=>{
     
     
     const handleUpdatePost = async (postId, formData) => {
-              console.log(formData);
 
     const updatePost = await postService.update(postId, formData)
-    console.log(updatePost,"update post");
     
     const updatedPostList = posts.map((post) => {
       return postId === post._id ? updatePost : post
     })
-    console.log(updatedPostList,"updated list");
     
     setPosts(updatedPostList)
     navigate(`/posts/${postId}`)

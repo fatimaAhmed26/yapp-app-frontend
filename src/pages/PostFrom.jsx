@@ -16,7 +16,7 @@ const PostForm =(props)=>{
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
     }
      const handleFileChange = (event) => {
-        console.log(event.target.files)
+        (event.target.files)
         setFormData(prev => ({...prev, media: event.target.files[0]}))
     }
    const handleSubmit = (event) => {
@@ -32,8 +32,8 @@ const PostForm =(props)=>{
          const submitData = new FormData()
         submitData.append('media', formData.media)
         submitData.append('text', formData.text)
-        console.log(submitData);
-        console.log([...submitData.entries()],"submit Data");
+        (submitData);
+        ([...submitData.entries()],"submit Data");
         
          props.handleAddPost(submitData)
         }

@@ -12,7 +12,7 @@ const create = async (postId, commentFormData) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -26,7 +26,7 @@ const deleteComment = async (postId, commentId) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
