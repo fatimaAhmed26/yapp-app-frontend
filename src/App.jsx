@@ -64,7 +64,22 @@ const deletePost=async(postId)=>{
   setPosts(
     posts.map((post) =>
       post._id === postId ? { ...post, comment: post.comment.filter((c) => c._id !== commentId) } : post))}
+    
+    
+    const handleUpdatePost = async (postId, formData) => {
+              console.log(formData);
 
+    const updatePost = await postService.update(postId, formData)
+    console.log(updatePost,"update post");
+    
+    const updatedPostList = posts.map((post) => {
+      return postId === post._id ? updatePost : post
+    })
+    console.log(updatedPostList,"updated list");
+    
+    setPosts(updatedPostList)
+    navigate(`/posts/${postId}`)
+  }
 
   return (
     <div className="app-layout">
@@ -81,6 +96,8 @@ const deletePost=async(postId)=>{
 
         <Route path="/posts" element={<PostList posts={posts} user={user} />}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
+        <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} />}/>
+
 
         <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
         handleDeleteComment={handleDeleteComment} user={user}onPostUpdated={handlePostUpdated}/>}/>
