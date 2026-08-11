@@ -12,7 +12,7 @@ const CommentList = ({ comments, currentUser, handleDeleteComment }) => {
               {new Date(comment.createdAt).toLocaleDateString()}
             </span>
             {currentUser && comment.author && currentUser._id === comment.author._id && (
-              <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+              <button onClick={() => handleDeleteComment(comment._id)}>Delete Delete</button>
             )}
           </footer>
         </article>
