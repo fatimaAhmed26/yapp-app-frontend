@@ -79,11 +79,11 @@ const deletePost=async(postId)=>{
         <Route path="/users/:userId/followers" element={<UserList type='followers' /> } />
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
 
-        <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
+        <Route path="/posts" element={<PostList posts={posts} user={user} />}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
 
         <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
-        handleDeleteComment={handleDeleteComment} user={user}/>}/>
+        handleDeleteComment={handleDeleteComment} user={user}onPostUpdated={handlePostUpdated}/>}/>
       </Routes>
       </main>
     </div>
