@@ -13,7 +13,7 @@ import * as postService from './services/post'
 import PostForm from "./pages/PostFrom"
 import PostList from "./pages/PostList"
 import PostDetails from "./pages/PostDetails"
-
+import * as commentService from "./services/comment"
 
 const getUserFromToken = () => {
   const token = localStorage.getItem('token')
@@ -61,7 +61,8 @@ const [posts ,setPosts] = useState([])
 
         <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
-        <Route path='/posts/:postId' element={<PostDetails posts={posts}/>}/>
+        <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} user={user} onPostUpdated={handlePostUpdated}
+         deletePost={deletePost}/>}/>
       </Routes>
       </main>
     </div>
