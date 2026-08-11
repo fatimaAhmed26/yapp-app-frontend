@@ -62,7 +62,7 @@ const [posts ,setPosts] = useState([])
         <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
         <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} user={user} onPostUpdated={handlePostUpdated}
-         deletePost={deletePost}/>}/>
+       setUser={setUser}/>}/>
       </Routes>
       </main>
     </div>
