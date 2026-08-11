@@ -2,7 +2,6 @@ import { Link } from "react-router"
 import { likeToggle } from "../services/post"
 
 const PostList = (props) => {
-
     const handleLike = async (postId) => {
         const updatedPost = await likeToggle(postId)
         props.onPostUpdated(updatedPost)
@@ -10,7 +9,6 @@ const PostList = (props) => {
 
     return (
         <main>
-            <h1>post list</h1>
             {props.posts.map((post) => {
                 const isLiked = props.user && post.likes?.some((like) => like === props.user._id || like._id === props.user._id)
                 const isOwnPost = props.user && props.user._id === post.owner
