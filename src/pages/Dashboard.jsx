@@ -29,7 +29,9 @@ const Dashboard = (props) => {
         const updatedPost = await likeToggle(postId)
         props.onPostUpdated(updatedPost)
     }
-
+const handlePostUpdated = (updatedPost) => {
+    setPosts(posts.map((post) => (post._id === updatedPost._id ? updatedPost : post)))
+  }
     return (
         <section>
             {/* <header>
@@ -50,7 +52,7 @@ const Dashboard = (props) => {
                 </div> 
                 </Link>
             ))} */}
-            <PostList posts={posts} />
+            <PostList posts={posts} onPostUpdated={handlePostUpdated}/>
         </section>
     )
 }
