@@ -37,7 +37,7 @@ return(
     {post.media?.type === 'video' && (
       <video src={post.media.url} controls width="300" />
     )}
-    
+                                <button onClick={() => navigate(`/posts/${postId}/edit`)}>Edit</button>
    <button onClick={openModal}>Delete</button>
       <dialog ref={dialogRef} style={{ padding: '20px', borderRadius: '8px', border: 'none' }}>
         <h2>Are you sure?</h2>
