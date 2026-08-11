@@ -32,7 +32,6 @@ const [posts ,setPosts] = useState([])
     const fetchAllPosts = async () => {
       const postsData = await postService.index()
       setPosts(postsData)
-      console.log(posts,"app post");
       
     }
     if (user) fetchAllPosts()
@@ -64,14 +63,26 @@ const deletePost=async(postId)=>{
   setPosts(
     posts.map((post) =>
       post._id === postId ? { ...post, comment: post.comment.filter((c) => c._id !== commentId) } : post))}
+    
+    
+    const handleUpdatePost = async (postId, formData) => {
 
+    const updatePost = await postService.update(postId, formData)
+    
+    const updatedPostList = posts.map((post) => {
+      return postId === post._id ? updatePost : post
+    })
+    
+    setPosts(updatedPostList)
+    navigate(`/posts/${postId}`)
+  }
 
   return (
     <div className="app-layout">
       <Nav user={user} setUser={setUser} />
       <main className="app-main">
       <Routes>
-        <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+        <Route path='/' element={user ? <Dashboard user={user} posts={posts} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/users/:userId" element={<Profile user={user} posts={posts}/>} />
@@ -81,8 +92,10 @@ const deletePost=async(postId)=>{
 
         <Route path="/posts" element={<PostList posts={posts} user={user} onPostUpdated={handlePostUpdated}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
+        <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} />}/>
 
-        <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
+
+        <Route path='/posts/:postId' element={<PostDetails user={user} posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
         handleDeleteComment={handleDeleteComment} user={user}onPostUpdated={handlePostUpdated}/>}/>
       </Routes>
       </main>
