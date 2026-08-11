@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { index } from '../services/user'
 import { Link } from "react-router"
 
-
 const Dashboard = (props) => {
 
     const [allUsers, setAllUsers] = useState([])
