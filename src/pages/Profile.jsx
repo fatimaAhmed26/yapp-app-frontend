@@ -3,7 +3,9 @@ import { useParams } from "react-router";
 import { show } from "../services/user";
 import { followToggle } from "../services/user";
 import { Link } from "react-router";
-
+import { HeartIcon } from "@heroicons/react/24/outline"
+import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid"
+import { likeToggle } from "../services/post";
 
 const Profile = (props) => {
     const { userId } = useParams()
@@ -23,8 +25,11 @@ const Profile = (props) => {
         await followToggle(userId)
         const nowUser = await show(userId)
         setProfileUser(nowUser)
-
     }
+    const handleLike = async (postId) => {
+    const updatedPost = await likeToggle(postId)
+    props.onPostUpdated(updatedPost)
+}
 
     const isFollowing = props.user && profileUser.followers?.some((follower) => follower._id=== props.user._id)
     const isOwnProfile = props.user && props.user._id === profileUser._id
@@ -48,8 +53,7 @@ return (
                 ) : (
                     <button
                         className={`profile-btn ${isFollowing ? 'profile-btn-following' : 'profile-btn-follow'}`}
-                        onClick={handleFollow}
-                    >
+                        onClick={handleFollow}>
                         {isFollowing ? 'Following' : 'Follow'}
                     </button>
                 )}
@@ -80,7 +84,9 @@ return (
             <p className="profile-empty">No posts yet.</p>
         ) : (
             <ul className="profile-posts-list">
-                {userPosts.map((post) => (
+                {userPosts.map((post) => {
+                    const isLiked = props.user && post.likes?.some((like) => like === props.user._id || like._id === props.user._id)
+                    return (
                     <li className="profile-post-item" key={post._id}>
                    <Link className="profile-post-link" to={`/posts/${post._id}`}>
                    <p className="profile-post-author">@{profileUser.username}</p>
@@ -96,8 +102,12 @@ return (
             </div>
         )}
     </Link>
-</li>
-                ))}
+    <button className="profile-post-like-btn" onClick={() => handleLike(post._id)}>
+    {isLiked ? (  <HeartIconSolid className="like-icon like-icon-active" /> 
+    ): ( <HeartIcon className="like-icon" /> )} {post.likes?.length || 0} </button>
+    </li>
+                    )
+})}
             </ul>
         )}
     </section>
