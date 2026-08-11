@@ -1,21 +1,25 @@
 import { useParams, useNavigate, Link } from "react-router"
 import { useRef } from 'react';
+import { create, deleteComment } from '../services/comment'
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
+
 const PostDetails = (props) =>{
       const { postId } = useParams()
   const navigate = useNavigate()
   const post = props.posts.find((post) => post._id === postId)
 
-    if (!post) return <main>Loading...</main> 
+    const handleAddComment = async (formData) => {
+    const newComment = await create(postId, formData)
+    const updatedPost = { ...post, comment: [...post.comment, newComment] }
+    props.onPostUpdated(updatedPost)}
 
-    const handleAddComment = (commentFormData) => {
-    props.handleAddComment(postId, commentFormData)}
-
-    const handleDeleteComment = (commentId) => {
-    props.handleDeleteComment(postId, commentId)}
-
-
+    const handleDeleteComment = async (commentId) => {
+    await deleteComment(postId, commentId)
+    const updatedPost = { ...post, comment: post.comment.filter((comment) => comment._id !== commentId) }
+    props.onPostUpdated(updatedPost)
+}
+    if (!post) return <main>Loading...</main>
 
 return(
     <main>
@@ -28,13 +32,13 @@ return(
       <video src={post.media.url} controls width="300" />
     )}
 
-      <h3>Comments</h3>
-      <CommentList
-        comments={post.comment}
-        user={props.user}
-        handleDeleteComment={handleDeleteComment}
-      />
-      <CommentForm handleAddComment={handleAddComment} />
+     <h3>Comments</h3>
+            <CommentList
+                comments={post.comment}
+                currentUser={props.user}
+                handleDeleteComment={handleDeleteComment}
+            />
+            <CommentForm handleAddComment={handleAddComment} />
     </main>
 )
 }

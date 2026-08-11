@@ -1,22 +1,23 @@
-const CommentList = (props) => {
-
-  if (!props.comments || props.comments.length === 0) {
-    return <p>No comments yet.</p>
-  }
-
+const CommentList = ({ comments, currentUser, handleDeleteComment }) => {
   return (
-    <ul>
-      {props.comments.map((comment) => (
-        <li key={comment._id}>
-          <strong>{comment.author?.username}</strong>: {comment.comment}
-          {props.user && comment.author?._id === props.user._id && (
-            <button onClick={() => props.handleDeleteComment(comment._id)}>
-              Delete
-            </button>
-          )}
-        </li>
+    <main className="comment-list">
+      {comments?.map((comment) => (
+        <article key={comment._id} className="card">
+          <header>
+            <p className="comment-author">{comment.author?.username || 'Unknown user'}</p>
+          </header>
+          <p className="comment-text">{comment.comment}</p>
+          <footer className="comment-footer">
+            <span>
+              {new Date(comment.createdAt).toLocaleDateString()}
+            </span>
+            {currentUser && comment.author && currentUser._id === comment.author._id && (
+              <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+            )}
+          </footer>
+        </article>
       ))}
-    </ul>
+    </main>
   )
 }
 
