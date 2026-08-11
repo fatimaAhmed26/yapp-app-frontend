@@ -5,7 +5,6 @@ import { Link } from "react-router"
 import PostList from "./PostList"
 
 const Dashboard = (props) => {
-console.log(props);
 
     const [allUsers, setAllUsers] = useState([])
 
@@ -22,7 +21,6 @@ console.log(props);
         const fetchAllPosts = async () => {
           const postsData = await postService.index()
           setPosts(postsData)
-          console.log(posts,"app post");
           
         }
         if (allUsers) fetchAllPosts()

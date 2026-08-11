@@ -8,7 +8,7 @@ const index = async () => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -23,7 +23,8 @@ const create = async (postFormData) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
+    
   }
 }
 
@@ -37,7 +38,7 @@ const deletePost = async (postId) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -52,7 +53,7 @@ async function update(postId, postFormData) {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -63,7 +64,7 @@ const show = async (postId) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 const likeToggle = async (postId) => {
@@ -74,7 +75,7 @@ const likeToggle = async (postId) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    throw new Error(error)
   }
 }
 

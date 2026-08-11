@@ -37,7 +37,10 @@ return(
     {post.media?.type === 'video' && (
       <video src={post.media.url} controls width="300" />
     )}
-
+       <p>
+          Created at :
+          {new Date(post.createdAt).toLocaleDateString()}
+       </p>
    { PostOwner? (
      ("")
     ) :<>
