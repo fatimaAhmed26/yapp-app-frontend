@@ -4,7 +4,6 @@ import { index } from '../services/user'
 import { Link } from "react-router"
 import PostList from "./PostList"
 
-
 const Dashboard = (props) => {
 console.log(props);
 
