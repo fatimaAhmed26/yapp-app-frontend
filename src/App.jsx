@@ -99,7 +99,7 @@ const deletePost=async(postId)=>{
         <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} />}/>
 
 
-        <Route path='/posts/:postId' element={<PostDetails posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
+        <Route path='/posts/:postId' element={<PostDetails user={user} posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
         handleDeleteComment={handleDeleteComment} user={user}onPostUpdated={handlePostUpdated}/>}/>
       </Routes>
       </main>
