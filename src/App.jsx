@@ -77,9 +77,22 @@ const deletePost=async(postId)=>{
     navigate(`/posts/${postId}`)
   }
 
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  const handleDark = () => {
+  setIsDarkMode(true)
+}
+
+const handleLight = () => {
+  setIsDarkMode(false)
+}
+
+
+
   return (
-    <div className="app-layout">
-      <Nav user={user} setUser={setUser} />
+    
+    <div className={`app-layout ${isDarkMode ? 'dark' : ''}`}>
+      <Nav user={user} setUser={setUser} isDarkMode={isDarkMode} handleDark={handleDark} handleLight={handleLight}/>
       <main className="app-main">
       <Routes>
         <Route path='/' element={user ? <Dashboard user={user} posts={posts} /> : <Landing />} />

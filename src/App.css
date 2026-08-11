@@ -1,4 +1,13 @@
-
+.dark {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-primary-soft: #1e3a5f;
+  --color-text: #e5e7eb;
+  --color-text-light: #9ca3af;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+}
 
 .app-main {
   display: flex;
@@ -6,11 +15,15 @@
   flex: 1;
   width: 100%;
   padding: 48px 24px;
+  
 }
 
 .app-layout {
   min-height: 100vh;
   display: flex;
+  background-color: var(--color-background);
+  transition: background-color 0.2s ease;
+  color: var(--color-text);
 }
 
 @media (max-width: 600px) {
@@ -37,11 +50,13 @@ nav {
   width: 260px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   
+  
 }
 
 .nav-brand {
   font-weight: bolder;
   font-size: 1.5rem;
+  
 }
 
 nav ul {
@@ -50,10 +65,12 @@ nav ul {
   gap: 16px;
   list-style: none;
   width: 100%;
+  
 }
 
 nav ul li {
   border-radius: 999px;
+  
   
 }
 
@@ -64,6 +81,7 @@ nav ul li a {
   padding: 10px 14px;
   font-size: 0.85rem;
   color: #333;
+  color: var(--color-text);
 }
 
 .nav-icon {
@@ -327,4 +345,82 @@ button.profile-btn-following:hover {
   font-size: 0.85rem;
   font-weight: 700;
   margin: 0 0 4px;
+}
+
+.user-list-page {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.user-list-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background-color: var(--color-surface);
+  border-radius: 24px 24px 0 0;
+  z-index: 1;
+}
+
+.user-list-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.user-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.user-list-items li:last-child .user-list-row {
+  border-bottom: none;
+  border-radius: 0 0 24px 24px;
+}
+
+.user-list-row:hover {
+  background-color: var(--color-primary-soft);
+}
+
+.user-list-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-list-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  flex-shrink: 0;
+}
+
+.user-list-username {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.user-list-empty {
+  padding: 40px 24px;
+  text-align: center;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
 }

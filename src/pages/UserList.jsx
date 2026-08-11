@@ -21,18 +21,32 @@ const UserList = ({ type}) => {
     const title = type == 'followers' ? 'Followers' : 'Following'
 
     return (
-      <section>
-        {list.map((user) => (
-            <Link to={`/users/${user._id}`} key={user._id}>
-                <div className="card">
-                    <header>
-                        {user.profilePic && <img src={user.profilePic} width="50px" />}
-                        <h1>@{user.username}</h1>
-                    </header>
-                </div>
-            </Link>
-        ))}
-      </section>
+       <section className="user-list-page">
+            <header className="user-list-header">
+                <h1 className="user-list-title">{title}</h1>
+            </header>
+
+            {list.length === 0 ? (
+                <p className="user-list-empty">
+                    {type == 'followers' ? 'No followers yet.' : 'Not following anyone yet.'}
+                </p>
+            ) : (
+                <ul className="user-list-items">
+                    {list.map((user) => (
+                        <li key={user._id}>
+                            <Link to={`/users/${user._id}`} className="user-list-row">
+                                {user.profilePic ? (
+                                    <img className="user-list-avatar" src={user.profilePic} alt={user.username} />
+                                ) : (
+                                    <div className="user-list-avatar-placeholder"></div>
+                                )}
+                                <span className="user-list-username">@{user.username}</span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </section>
     
     )
 }
