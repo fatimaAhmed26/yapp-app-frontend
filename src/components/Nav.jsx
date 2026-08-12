@@ -17,7 +17,7 @@ const Nav = (props) => {
                 <ul>
                     
                     <li>
-                        <Link to="/">
+                        <Link to="/posts">
                         <HomeIcon className="nav-icon" />
                         Home</Link>
                     </li>

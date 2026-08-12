@@ -29,13 +29,15 @@ const App = () => {
 const [posts ,setPosts] = useState([])
   const [user, setUser] = useState(getUserFromToken())
    useEffect(() => {
-    const fetchAllPosts = async () => {
-      const postsData = await postService.index()
-      setPosts(postsData)
-      
-    }
-    if (user) fetchAllPosts()
-  }, [user])
+  const fetchAllPosts = async () => {
+    const postsData = await postService.index()
+    const sortPosts = [...postsData].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    )
+    setPosts(sortPosts)
+  }
+  if (user) fetchAllPosts()
+}, [user])
   const handleAddPost = async (formData) => {
     const newPost = await postService.create(formData)
     setPosts([...posts , newPost])
