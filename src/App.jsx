@@ -93,6 +93,7 @@ const handleLight = () => {
       <Nav user={user} setUser={setUser} isDarkMode={isDarkMode} handleDark={handleDark} handleLight={handleLight}/>
       <main className="app-main">
       <Routes>
+        <Route path='/' element={<Landing />}/>
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/users/:userId" element={<Profile user={user} posts={posts} onPostUpdated={handlePostUpdated}/>} />
