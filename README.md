@@ -1,16 +1,46 @@
-# React + Vite
+Yapp — Frontend
+The React client for the Yapp social media app.
+￼![alt text](yapp-img.png)
+### Getting Started
+* Deployed App: 
+* Backend Repo: https://github.com/fatimaAhmed26/yapp-app-backend.git 
+* Planning Materials / Trello Board: https://trello.com/b/Q4O9XAwW/social-media-app 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Description
+Yapp lets users sign up, build a profile, and share posts with text, images, or videos. Users can follow other members, like and comment on posts, and manage their own content — all wrapped in a fully responsive UI with light and dark mode support.
 
-Currently, two official plugins are available:
+## Features
+* Authentication — sign up, sign in, and sign out
+* Feed — browse all posts with owner info, media, and like counts
+* Posts — create, edit, and delete your own posts with optional image/video upload
+* Likes — like/unlike posts with a live count
+* Comments — add and delete comments on a post, with author attribution
+* Follow system — follow/unfollow users, view followers/following lists
+* Profiles — view any user's profile and posts; edit your own profile or delete your account
+* Authorization guards — edit/delete actions are hidden and blocked for non-owners
+* Dark mode — app-wide theme toggle using CSS custom properties
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies Used
+* React
+* React Router
+* Heroicons
+* CSS (custom properties for theming/dark mode)
+* Vite
 
-## React Compiler
+## How to use 
+- Sign up for an account or sign in.
+- Browse the feed to see posts from everyone, or create your own post with text, an image, or a video.
+- Like any post to show appreciation, or unlike it to remove your like.
+- Leave a comment on any post, and delete your own comments anytime.
+- Follow other users to build your network; view their profile to see all their posts.
+- Visit your followers & following pages to see your connections.
+- Edit your profile (username, bio, profile picture) or delete your account from the edit page.
+- Toggle dark mode from the nav for a different look anytime.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation
+npm install
+npm run dev
 
-## Expanding the ESLint configuration
+## Attributions
+* Heroicons for UI icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
