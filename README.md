@@ -43,4 +43,6 @@ npm run dev
 
 ## Attributions
 * Heroicons for UI icons
+* Claude for the style.
+* Cloudinary for media hosting.
 
