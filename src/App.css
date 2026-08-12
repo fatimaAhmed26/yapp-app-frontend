@@ -451,3 +451,100 @@ button.profile-btn-following:hover {
 .like-icon-active {
   color: var(--color-error);
 }
+.feed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.feed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feed-post {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 16px 24px;
+}
+
+.feed-post-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.feed-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.feed-avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+}
+
+.feed-username {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.feed-post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.feed-post-text {
+  font-size: 0.9rem;
+  margin: 0 0 10px;
+}
+
+.feed-post-media {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  max-width: 500px;
+}
+
+.feed-post-media img,
+.feed-post-media video {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.feed-like-btn {
+  margin-top: 12px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: transparent;
+  color: var(--color-text-light);
+  border-radius: 999px;
+}
+
+.feed-like-btn:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-error);
+}
