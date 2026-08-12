@@ -25,7 +25,7 @@ const openModal = () => dialogRef.current?.showModal();
     
 }
     if (!post) return <main>Loading...</main>
-const PostOwner = props.posts.user === props.user._id
+const PostOwner = post.owner._id === props.user._id
 return(
     <main>
         post details
@@ -42,11 +42,11 @@ return(
           {new Date(post.createdAt).toLocaleDateString()}
        </p>
    { PostOwner? (
-     ("")
-    ) :<>
+     <>
      <button onClick={() => navigate(`/posts/${postId}/edit`)}>Edit</button> 
     <button onClick={openModal}>Delete</button> 
-     </> }
+     </>
+    ) :false }
       <dialog ref={dialogRef} style={{ padding: '20px', borderRadius: '8px', border: 'none' }}>
         <h2>Are you sure?</h2>
         <p>when you click delete this post will be deleted</p>
