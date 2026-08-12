@@ -35,7 +35,7 @@ const SignUpForm = (props) => {
             props.setUser(newUser)
             setFormData(initialState)
             setProfilePic(null)
-            navigate('/')
+            navigate('/posts')
         } catch (err) {
             setMessage(err.message)
         }

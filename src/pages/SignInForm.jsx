@@ -24,7 +24,7 @@ const SignInForm = (props) => {
             const signedInUser = await signIn(formData)
             props.setUser(signedInUser)
             setFormData(initialState)
-            navigate('/')
+            navigate('/posts')
         } catch(err) {
             setMessage(err.message)
         }
