@@ -44,7 +44,11 @@ const PostForm = (props) => {
 
         return () => setFormData(initialState)
     }, [postId])
+const post = props.posts?.find((p) => p._id === postId)
 
+if (postId && post && props.user._id !== post.owner._id) {
+    return <h1>You are not allowed to do this!!!</h1>
+}
     return (
         <section className="card">
             <header>
