@@ -548,3 +548,64 @@ button.profile-btn-following:hover {
   background-color: var(--color-primary-soft);
   color: var(--color-error);
 }
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-primary);
+  font-family: inherit;
+  resize: vertical;
+}
+
+form textarea:focus {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary-soft);
+}
+
+form input[type="file"] {
+  padding: 8px 0;
+  border: none;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.btn-danger {
+  width: 100%;
+  margin-top: 12px;
+  background-color: transparent;
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.form-error {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
