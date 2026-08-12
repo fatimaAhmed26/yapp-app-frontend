@@ -649,7 +649,7 @@ form input[type="file"] {
 .post-details-media img,
 .post-details-media video {
   width: 100%;
-  max-height: 220px;
+  max-height: 320px;
   object-fit: cover;
   display: block;
 }
