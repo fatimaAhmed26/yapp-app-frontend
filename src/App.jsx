@@ -88,8 +88,6 @@ const handleLight = () => {
   setIsDarkMode(false)
 }
 
-
-
   return (
     
     <div className={`app-layout ${isDarkMode ? 'dark' : ''}`}>
@@ -106,7 +104,7 @@ const handleLight = () => {
 
         <Route path="/posts" element={<PostList posts={posts} onPostUpdated={handlePostUpdated} user={user}/>}/>
         <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
-        <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} />}/>
+        <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} posts={posts}  user={user}/>}/>
 
 
         <Route path='/posts/:postId' element={<PostDetails user={user} posts={posts} deletePost={deletePost} handleAddComment={handleAddComment}
