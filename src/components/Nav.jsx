@@ -40,7 +40,7 @@ const Nav = (props) => {
                     </li>
                      <li>
                     <a onClick={props.isDarkMode ? props.handleLight : props.handleDark} style={{ cursor: 'pointer' }}>
-                    <MoonIcon className="nav-icon" />
+                    {props.isDarkMode ? <SunIcon className="nav-icon" /> : <MoonIcon className="nav-icon" />}
                     {props.isDarkMode ? 'Light Mode' : 'Dark Mode'}
                      </a>
                     </li>

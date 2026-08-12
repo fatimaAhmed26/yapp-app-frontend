@@ -121,6 +121,11 @@ form input:focus {
   flex: 1;
 }
 
+.actions .btn-danger {
+  width: auto;
+  margin-top: 0;
+}
+
 button:hover {
   background-color: var(--color-primary-dark);
 }

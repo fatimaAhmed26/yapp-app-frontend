@@ -58,7 +58,7 @@ return(
 
                 {PostOwner && (
                     <div className="actions">
-                        <button onClick={() => navigate(`/posts/${postId}/edit`)}>Edit</button>
+                        <button  onClick={() => navigate(`/posts/${postId}/edit`)}>Edit</button>
                         <button className="btn-danger" onClick={openModal}>Delete</button>
                     </div>
                 )}
