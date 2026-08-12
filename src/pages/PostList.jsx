@@ -11,8 +11,8 @@ const PostList = (props) => {
 
     return (
         <main className="feed">
-            <h1>For the certified professional yappers.</h1>
             <ul className="feed-list">
+            <h1>For the certified professional yappers.</h1>
                 {props.posts.map((post) => {
                     const isLiked = props.user && post.likes?.some((like) => like === props.user._id || like._id === props.user._id)
 

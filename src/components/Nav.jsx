@@ -1,5 +1,5 @@
 import { Link } from "react-router"
-import { HomeIcon, UserIcon,UserGroupIcon,UsersIcon, MoonIcon, ArrowRightStartOnRectangleIcon, SunIcon } from "@heroicons/react/24/outline"
+import { HomeIcon, UserIcon,UserGroupIcon,UsersIcon, MoonIcon, ArrowRightStartOnRectangleIcon, SunIcon, PlusCircleIcon} from "@heroicons/react/24/outline"
 
 const Nav = (props) => {
 
@@ -40,18 +40,20 @@ const Nav = (props) => {
                     </li>
                      <li>
                     <a onClick={props.isDarkMode ? props.handleLight : props.handleDark} style={{ cursor: 'pointer' }}>
-                    <MoonIcon className="nav-icon" />
+                    {props.isDarkMode ? <SunIcon className="nav-icon" /> : <MoonIcon className="nav-icon" />}
                     {props.isDarkMode ? 'Light Mode' : 'Dark Mode'}
                      </a>
+                    </li>
+                    <li>
+                        <Link to='/posts/new'>
+                        <PlusCircleIcon className="nav-icon" />
+                        Add post</Link>
                     </li>
                     <li>
                         <Link to="/" onClick={handleSignOut}>
                         <ArrowRightStartOnRectangleIcon className="nav-icon" />
                         Sign Out</Link>
                     </li>
-                      <li>
-                    <Link to='/posts/new'>Add post</Link>
-                </li>
                 </ul>
                 
             ) : (

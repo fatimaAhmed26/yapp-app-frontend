@@ -53,23 +53,37 @@ const EditProfile = (props) => {
     }
    
 
-    return (
-        <section>
+      return (
+        <section className="card">
             <header>
                 <h1>Edit profile</h1>
             </header>
-            <form onSubmit={handleSubmit}>
-                Username: 
-                <input type="text" name="username" value={formData.username} onChange={handleChange} />
-                Bio:
-                <textarea name="bio" value={formData.bio} onChange={handleChange} />
-                Profile Pic:
-                <input type="file" name="profilePic" onChange={handleFileChange} />
 
-                <button type="submit">Submit</button>
-                <button type="button"onClick={() => navigate(`/users/${userId}`)} >Cancel</button>
-                <button type="button" onClick={handleDelete}>Delete</button>
-            </form> 
+            {message && <p className="form-error">{message}</p>}
+
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Username
+                    <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                </label>
+
+                <label>
+                    Bio
+                    <textarea name="bio" value={formData.bio} onChange={handleChange} rows={4} />
+                </label>
+
+                <label>
+                    Profile Picture
+                    <input type="file" name="profilePic" onChange={handleFileChange} />
+                </label>
+
+                <div className="actions">
+                    <button type="submit">Save</button>
+                    <button type="button" className="btn-secondary" onClick={() => navigate(`/users/${userId}`)}>Cancel</button>
+                </div>
+
+                <button type="button" className="btn-danger" onClick={handleDelete}>Delete Account</button>
+            </form>
         </section>
     )
 

@@ -26,11 +26,11 @@ const CommentForm = (props) => {
    
 
     return (
-       <form onSubmit={handleSubmit}>
+       <form className="comment-form" onSubmit={handleSubmit}>
     <label htmlFor='text-input'>Your comment:</label>
-    <textarea required name='comment'id='text-input' value={formData.comment} onChange={handleChange}/>
+    <textarea required name='comment' id='text-input' value={formData.comment} onChange={handleChange}/>
     <button type='submit'>SUBMIT COMMENT</button>
-  </form>
+</form>
     )
 }
 
