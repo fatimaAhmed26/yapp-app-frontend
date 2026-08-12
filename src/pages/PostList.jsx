@@ -8,13 +8,13 @@ const PostList = (props) => {
     }
 
     return (
-        <main>
+        <main >  
             {props.posts.map((post) => {
                 const isLiked = props.user && post.likes?.some((like) => like === props.user._id || like._id === props.user._id)
                 const isOwnPost = props.user && props.user._id === post.owner
 
                 return (
-                    <div key={post._id}>
+                    <div key={post._id} >
                         <Link to={`/posts/${post._id}`}>
                             {post.text && <p>{post.text}</p>}
                             {post.media?.type === 'image' && (
