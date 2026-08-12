@@ -10,7 +10,6 @@ const index = async (formData) => {
         
 
         if (data.err) {
-            console.log(data.err)
             throw new Error(data.err)
         }
 
@@ -40,7 +39,6 @@ const followToggle = async (userId) => {
         const data= await res.json()
 
          if (data.err) {
-            console.log(data.err)
             throw new Error(data.err)
         }
 
@@ -74,7 +72,6 @@ const deleteUser = async (userId) => {
         const data = await res.json()
 
          if (data.err) {
-            console.log(data.err)
             throw new Error(data.err)
         }
     } catch (err) {

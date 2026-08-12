@@ -5,7 +5,6 @@ import { Routes, Route, useNavigate } from "react-router"
 import { useState , useEffect} from "react"
 import SignInForm from "./pages/SignInForm"
 import Landing from "./pages/Landing"
-import Dashboard from "./pages/Dashboard"
 import Profile from "./pages/Profile"
 import EditProfile from "./pages/EditProfile"
 import UserList from "./pages/UserList"
@@ -96,7 +95,6 @@ const handleLight = () => {
       <Nav user={user} setUser={setUser} isDarkMode={isDarkMode} handleDark={handleDark} handleLight={handleLight}/>
       <main className="app-main">
       <Routes>
-        <Route path='/' element={user ? <Dashboard user={user} posts={posts} /> : <Landing />} />
         <Route path='/sign-up' element={<SignUpForm setUser={setUser} />} />
         <Route path='/sign-in' element={<SignInForm setUser={setUser} />} />
         <Route path="/users/:userId" element={<Profile user={user} posts={posts} onPostUpdated={handlePostUpdated}/>} />

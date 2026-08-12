@@ -9,7 +9,6 @@ const signUp = async (formData) => {
         const data = await res.json()
 
         if (data.err) {
-            console.log(data.err)
             throw new Error(data.err)
         }
 
@@ -39,7 +38,6 @@ const signIn = async (formData) => {
 
         if (data.token) {
             localStorage.setItem('token', data.token)
-            // returning the user object
             return JSON.parse(atob(data.token.split('.')[1])).payload
         }
 

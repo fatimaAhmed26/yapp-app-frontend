@@ -22,9 +22,7 @@
 body {
   min-height: 100vh;
   margin: 0;
-  /* background-color: var(--color-background); */
   background: #f5fbfd;
-  /* background: linear-gradient(90deg, rgba(224, 231, 255, 1) 0%, rgba(79, 70, 229, 1) 100%); */
   color: var(--color-text);
 }
 
