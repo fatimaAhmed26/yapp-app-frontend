@@ -1,10 +1,17 @@
+import { Link } from "react-router"
+
 const CommentList = ({ comments, currentUser, handleDeleteComment }) => {
   return (
     <main className="comment-list">
       {comments?.map((comment) => (
         <article key={comment._id} className="card">
           <header>
-            <p className="comment-author">{comment.author?.username || 'Unknown user'}</p>
+            <p className="comment-author">
+              {comment.author ? (
+                <Link to={`/users/${comment.author._id}`}>
+                  {comment.author.username}
+                </Link> ) : ( 'Unknown user' )}
+            </p>
           </header>
           <p className="comment-text">{comment.comment}</p>
           <footer className="comment-footer">
