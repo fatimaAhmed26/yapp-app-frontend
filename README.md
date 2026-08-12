@@ -2,7 +2,7 @@ Yapp — Frontend
 The React client for the Yapp social media app.
 ￼![alt text](yapp-img.png)
 ### Getting Started
-* Deployed App: 
+* Deployed App: joyful-flan-714bd6.netlify.app
 * Backend Repo: https://github.com/fatimaAhmed26/yapp-app-backend.git 
 * Planning Materials / Trello Board: https://trello.com/b/Q4O9XAwW/social-media-app 
 
