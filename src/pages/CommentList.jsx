@@ -9,7 +9,7 @@ const CommentList = ({ comments, currentUser, handleDeleteComment }) => {
             <p className="comment-author">
               {comment.author ? (
                 <Link to={`/users/${comment.author._id}`}>
-                  {comment.author.username}
+                  @{comment.author.username}
                 </Link> ) : ( 'Unknown user' )}
             </p>
           </header>
