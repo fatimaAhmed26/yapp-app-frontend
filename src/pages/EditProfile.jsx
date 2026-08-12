@@ -18,6 +18,10 @@ const EditProfile = (props) => {
              fetchUser()
          }, [userId])
 
+         if (!props.user || props.user._id !== userId) {
+        return <h1>You are not allowed to do this!!!</h1>
+    }
+
     const handleFileChange = (event) => {
         setProfilePic(event.target.files[0])
     }
