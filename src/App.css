@@ -145,6 +145,11 @@ nav a:hover {
     height: 20px;
   }
 
+  .nav-guest a {
+    font-size: 0.85rem;   
+    padding: 10px 16px;
+  }
+
   .nav-add-post .nav-icon {
     width: 28px;
     height: 28px;

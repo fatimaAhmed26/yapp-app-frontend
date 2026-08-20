@@ -57,13 +57,13 @@ const Nav = (props) => {
                 
             ) : (
             <ul>
-                <li>
+                <li className="nav-guest">
                     <Link to='/'>Home</Link>
                 </li>
-                <li>
+                <li className="nav-guest">
                     <Link to='/sign-up'>Sign Up</Link>
                 </li>
-                <li>
+                <li className="nav-guest">
                     <Link to='/sign-in'>Sign In</Link>
                 </li>
                
