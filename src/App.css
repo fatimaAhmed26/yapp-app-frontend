@@ -871,3 +871,25 @@ button.profile-btn-following:hover {
   font-size: 0.85rem;
   margin-top: 4px;
 }
+
+.feed-comment-count {
+  margin-top: 12px;
+  margin-left: 8px;
+  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: inherit;
+  line-height: 1;
+  color: var(--color-text-light);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.feed-comment-count:hover {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+

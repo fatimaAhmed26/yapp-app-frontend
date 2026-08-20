@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { likeToggle } from "../services/post"
 import { HeartIcon } from "@heroicons/react/24/outline"
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid"
+import { ChatBubbleOvalLeftIcon } from "@heroicons/react/24/outline"
 
 const PostList = (props) => {
     const handleLike = async (postId) => {
@@ -49,6 +50,11 @@ const PostList = (props) => {
                                 )}
                                 {post.likes?.length || 0}
                             </button>
+
+                            <Link to={`/posts/${post._id}`} className="feed-comment-count">
+                           <ChatBubbleOvalLeftIcon className="like-icon" />
+                            {post.comment?.length || 0}
+                            </Link>
                         </li>
                     )
                 })}
