@@ -651,9 +651,10 @@ button.profile-btn-following:hover {
 .feed-post-media video {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  max-height: 500px;
+  object-fit: contain;
   display: block;
+  background-color: var(--color-background);
 }
 
 .feed-like-btn {
