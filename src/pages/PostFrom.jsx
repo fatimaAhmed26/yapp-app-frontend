@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useActionData, useParams } from 'react-router'
 import * as postServices from '../services/post'
-
+import { PhotoIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline'
 
 const PostForm = (props) => {
 

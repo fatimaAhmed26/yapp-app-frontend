@@ -6,6 +6,7 @@ import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
 const PostDetails = (props) =>{
+    const [replyingTo, setReplyingTo] = useState(null)
       const { postId } = useParams()
   const navigate = useNavigate()
   const post = props.posts.find((post) => post._id === postId)
@@ -79,8 +80,11 @@ return(
                     comments={post.comment}
                     currentUser={props.user}
                     handleDeleteComment={handleDeleteComment}
+                    onReply={setReplyingTo}
                 />
-                <CommentForm handleAddComment={handleAddComment} />
+                <CommentForm handleAddComment={handleAddComment}
+                replyingTo={replyingTo}
+                onCancelReply={() => setReplyingTo(null)} />
             </div>
         </main>
     )

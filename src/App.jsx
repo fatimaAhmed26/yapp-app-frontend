@@ -102,7 +102,7 @@ const handleLight = () => {
         <Route path="/users/:userId/following" element={<UserList type='following' /> } />
 
         <Route path="/posts" element={<PostList posts={posts} onPostUpdated={handlePostUpdated} user={user}/>}/>
-        <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost}/>}/>
+        <Route path='/posts/new' element={<PostForm handleAddPost={handleAddPost} user={user}/>}/>
         <Route path="/posts/:postId/edit" element={<PostForm  handleUpdatePost={handleUpdatePost} posts={posts}  user={user}/>}/>
 
 
